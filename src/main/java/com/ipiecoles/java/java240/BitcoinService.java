@@ -6,7 +6,24 @@ public class BitcoinService {
 
     private Double rate = null;
 
+    public Boolean getForceRefresh() {
+        return forceRefresh;
+    }
+
+    public void setForceRefresh(Boolean forceRefresh) {
+        this.forceRefresh = forceRefresh;
+    }
+
     private Boolean forceRefresh = false;
+    private  WebPageManager webPageManager;
+
+    public void setWebPageManager(WebPageManager webPageManager) {
+        this.webPageManager = webPageManager;
+    }
+
+    public WebPageManager getWebPageManager() {
+        return webPageManager;
+    }
 
     /**
      * Méthode qui renvoie le cours du Bitcoin
@@ -20,7 +37,6 @@ public class BitcoinService {
         }
 
         System.out.println("Récupération du cours du bitcoin sur site distant");
-        WebPageManager webPageManager = new WebPageManager();
 
         String apiResponse = webPageManager.getPageContents("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=EUR");
         apiResponse = apiResponse.replace("{\"EUR\":","");
