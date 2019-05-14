@@ -1,19 +1,22 @@
 package com.ipiecoles.java.java240;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ComponentScan("com.ipiecoles.java.java240")
+@PropertySource("classpath:application.properties")
 public class SpringConfig {
     //beans
+@Value("${bitcoinService.forceRefresh}")
+Boolean forceRefresh;
 
     @Bean(name = "bitcoinServiceWithoutCache")
     @Scope("singleton")//Facultatif car par défaut
     public BitcoinService bitcoinServiceWithoutCache(){
         BitcoinService bitcoinService = new BitcoinService();
-        bitcoinService.setForceRefresh(true);
-        bitcoinService.setWebPageManager(webPageManager());
+        bitcoinService.setForceRefresh(forceRefresh);
+   //     bitcoinService.setWebPageManager(webPageManager());
         return bitcoinService;
     }
 
@@ -21,21 +24,26 @@ public class SpringConfig {
     public BitcoinService bitcoinServiceWithCache(){
         BitcoinService bitcoinService = new BitcoinService();
         bitcoinService.setForceRefresh(false);
-        bitcoinService.setWebPageManager(webPageManager());
+    //    bitcoinService.setWebPageManager(webPageManager());
         return bitcoinService;
     }
 
 
-    @Bean
-    public WebPageManager webPageManager(){
-        return new WebPageManager();
-    }
+  //  @Bean
+   // public WebPageManager webPageManager(){
+    //    return new WebPageManager();
+   // }
 
-    @Bean
-    public ProduitManager produitManager(){
-        ProduitManager produitManager = new ProduitManager();
-        produitManager.setBitcoinService(bitcoinServiceWithoutCache());
-        produitManager.setWebPageManager(webPageManager());
-        return produitManager;
-    }
+   // @Bean
+   // public ProduitManager produitManager(){
+   //     ProduitManager produitManager = new ProduitManager();
+   //     produitManager.setBitcoinService(bitcoinServiceWithoutCache());
+   //     produitManager.setWebPageManager(webPageManager());
+   //     return produitManager;
+  //  }
 }
+
+
+
+
+

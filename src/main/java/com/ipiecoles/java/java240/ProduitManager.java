@@ -1,19 +1,27 @@
 package com.ipiecoles.java.java240;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+@Component
 public class ProduitManager {
 
+
     private List<Produit> produits = new ArrayList<>();
+    @Resource(name="bitcoinServiceWithCache")
     private BitcoinService bitcoinService;
+    @Autowired
+
     private WebPageManager webPageManager;
 
-    public BitcoinService getBitcoinService() {
-        return bitcoinService;
-    }
+//    public BitcoinService getBitcoinService() {
+//        return bitcoinService;
+//    }
 
     public void setBitcoinService(BitcoinService bitcoinService) {
         this.bitcoinService = bitcoinService;

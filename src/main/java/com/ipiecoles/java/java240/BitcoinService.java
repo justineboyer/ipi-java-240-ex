@@ -1,25 +1,24 @@
 package com.ipiecoles.java.java240;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 
 public class BitcoinService {
 
     private Double rate = null;
-
-    public Boolean getForceRefresh() {
-        return forceRefresh;
-    }
+    private Boolean forceRefresh = false;
 
     public void setForceRefresh(Boolean forceRefresh) {
         this.forceRefresh = forceRefresh;
     }
 
-    private Boolean forceRefresh = false;
+@Autowired
     private  WebPageManager webPageManager;
 
-    public void setWebPageManager(WebPageManager webPageManager) {
-        this.webPageManager = webPageManager;
-    }
+   // public void setWebPageManager(WebPageManager webPageManager) {
+   //     this.webPageManager = webPageManager;
+   // }
 
     public WebPageManager getWebPageManager() {
         return webPageManager;
