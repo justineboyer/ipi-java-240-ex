@@ -1,4 +1,9 @@
 package com.ipiecoles.java.java240;
 
-public interface ProduitRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProduitRepository extends CrudRepository<Produit, Long> {
+
 }

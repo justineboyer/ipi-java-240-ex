@@ -14,10 +14,14 @@ public class ProduitManager {
 
     private List<Produit> produits = new ArrayList<>();
     //@Resource(name="bitcoinServiceWithCache")
+
+    @Autowired
+    private ProduitRepository produitRepository;
+
     @Autowired
     private BitcoinService bitcoinService;
-    @Autowired
 
+    @Autowired
     private WebPageManager webPageManager;
 
 //    public BitcoinService getBitcoinService() {
@@ -83,7 +87,9 @@ public class ProduitManager {
             produits.add(new Produit(elements[0], Double.parseDouble(elements[1])));
             nbProduits++;
         }
+        produitRepository.saveAll(produits);
         System.out.println("Ajout de " + nbProduits + " produits !");
+        System.out.println("BDD: " + produitRepository.count() + " produits !");
     }
 
 }
