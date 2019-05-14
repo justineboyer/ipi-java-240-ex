@@ -13,7 +13,8 @@ public class ProduitManager {
 
 
     private List<Produit> produits = new ArrayList<>();
-    @Resource(name="bitcoinServiceWithCache")
+    //@Resource(name="bitcoinServiceWithCache")
+    @Autowired
     private BitcoinService bitcoinService;
     @Autowired
 
